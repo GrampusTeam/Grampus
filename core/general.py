@@ -11,6 +11,6 @@ def informacion(archivo):
     f.close()
     
     info["sha1"] = sha1.hexdigest()
-    info["peso"] = str(os.path.getsize(archivo)) + " bytes"
+    info["size"] = str(os.path.getsize(archivo)) + " bytes"
 
     return info
