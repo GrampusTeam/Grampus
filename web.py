@@ -79,7 +79,7 @@ def view(sFile):
         else:
             return "error: There are not extensions for the file {0}".format(escape(extension))
     else:
-        return "error: No es archivo"
+        return "error: It's not a file"
 
 @app.route("/config")
 def config():
