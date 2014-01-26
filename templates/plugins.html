@@ -1,0 +1,35 @@
+<div class="content">
+    <table>
+        <tr>
+            <td colspan="3">plugins</td>
+        </tr>
+        <tr>
+            <td>Plugin</td>
+            <td>Extensions</td>
+            <td>TAG</td>
+            <td>Action</td>
+
+        </tr>
+        
+            {%  for plugin in plugins  %}
+                    {% if plugins[plugin].active %}
+                        <tr class="verde">
+                    {% else %}
+                        <tr class="rojo">
+                    {% endif %}
+                <td>{{ plugins[plugin].name }}</td>
+                <td>{{ plugins[plugin].extensions[1::] }}</td>
+                <td>{{ plugins[plugin].extensions[0] }}</td>
+                    {% if plugins[plugin].active %}
+                        <td onclick="cargar('/desactivate/{{ plugins[plugin].name }}');" class="seleccion" title="Desactivate plugin"><img src="{{url_for('static', filename='des.png')}}" alt="Desactivar"/></td>
+                    {% else %}
+                        <td onclick="cargar('/activate/{{ plugins[plugin].name }}');" class="seleccion" title="Activate plugin"><img src="{{url_for('static', filename='act.png')}}" alt="Activar"/></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+    </table>
+    <div>
+        <a href="#" onclick="cargar('/reload');">Reload plugins</a>
+    </div>
+    
+</div>

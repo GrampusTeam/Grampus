@@ -1,0 +1,237 @@
+body {
+    background: #c6c6c6;
+    padding: 0;
+    margin: 0;
+}
+
+#lateral, #contenido {
+    padding: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+#lateral {
+    background: #111 url("bg3.png");
+    /*background: #eee url("bg4.png");-*/
+    width: 20%;
+    min-height: 100%;
+    position: absolute;
+    position: fixed;
+    box-shadow: 0 0 5px #111;
+    z-index: 1;
+    border-right: 1px solid #eee;
+}
+
+.logo {
+  width: 100px;
+  height: 80px;
+  display: block;
+  margin: auto;
+  max-width: 80%;
+}
+
+#lateral ul {
+    line-height: 35px;
+    color: #eee;
+    text-shadow: 0 0 5px #eee;
+    cursor: pointer;
+    width: 100%;
+    right: 0;
+    position: absolute;
+    text-align: center;
+}
+
+#lateral ul li {
+    padding: 0 10px;
+    transition: all 300ms ease-in;
+    /*text-align: left;*/
+    border-bottom: 1px solid #eee;
+}
+
+#lateral ul li:hover {
+    background: #eee;
+    color: #111;
+    box-shadow: 0 0 5px #eee;
+    text-shadow: 0 0 5px #111;
+}
+
+#lateral ul li:first-child {
+    border-top: 1px solid #eee;
+}
+
+#seleccionado {
+    background: #eee;
+    color: #111;
+    box-shadow: 0 0 5px #eee;
+    text-shadow: 0 0 5px #111;
+}
+
+#lateral a {
+    color: #eee;
+}
+
+#contenido {
+    background: #eee;
+    width: 80%;
+    max-width: 80%;
+    min-height: 100%;
+    position: absolute;
+    left: 20%;
+    word-break: keep-all;
+    text-align: center;
+    padding: 10px;
+    /*font-weight: bold;*/
+}
+
+#padre {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.content, form, table {
+    margin: 0 auto;
+    padding: 10px;
+    min-width: 500px;
+    box-shadow: inset 0 0 5px #000;
+    text-align: center;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.content table {
+    box-shadow: inset 0 0 15px #111;
+}
+
+#contenido a {
+    color: #111;
+}
+
+#contenido a:hover {
+    color: green;
+}
+
+tr, td{
+    border: 1px dotted #111;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.content ul li {
+    margin: 5px;
+    background: #111;
+    display: inline-block;
+    color: #eee;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.content ul li:hover {
+    box-shadow: 0 0 5px #111;
+}
+
+.verde {
+    background: #7F7;
+}
+
+.rojo {
+    background: #F77;
+}
+
+.seleccion {
+    cursor: pointer;
+}
+
+#mensaje {
+    position: absolute;
+    background: #F08080;
+    line-height: 100px;
+    min-width: 500px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.metadata tr:hover {
+    background: #77FF77;
+    background: #77F;
+}
+
+input[type=file] {
+    position: relative;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+#upload {
+    background: #111 url("plus.png") no-repeat center;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    border-radius: 5px;
+    transition: all 300ms ease-in;
+    cursor: pointer;
+}
+
+#upload:hover {
+    box-shadow: inset 0 0 5px #eee;
+    opacity: 0.5;
+}
+
+.file {
+    margin: 5px;
+    line-height: 25px;
+    background: #111;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 5px;
+    color: #eee;
+    cursor: pointer;
+}
+
+.file:hover {
+    background: #77f;
+}
+
+a {
+    cursor: pointer;
+}
+
+.botones {
+    position: fixed;
+}
+
+.botones div {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    background: #111 url("bg2.png");
+    margin: 5px 0;
+    transition: all 1s ease;
+    box-shadow: 0 0 5px #111;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.botones div:hover {
+    min-width: 200px;
+}
+
+.botones div:hover:after {
+    content: attr(title);
+}
+
+#grampus {
+    position: fixed;
+    bottom: 10px;
+    z-index: 10;
+    text-align: center;
+    width: 100%;
+}

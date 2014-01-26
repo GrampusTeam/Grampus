@@ -1,0 +1,105 @@
+from PyQt4.QtCore import *
+
+from modulos.crawlers import google
+from modulos.crawlers import grampus
+
+from modulos import libreoffice
+from modulos import office2007
+from modulos import gifg
+from modulos import pdf1
+
+from core.general import informacion
+from core.descargas import descargar
+
+
+import time
+
+
+class Extraer(QThread):
+
+    def __init__(self, archivo, index):
+        QThread.__init__(self)
+        self.archivo = archivo
+        self.index = index
+
+    def __del__(self):
+        self.wait
+
+    def run(self):
+        extension = self.archivo.split(".")[-1].lower()
+        if extension in ("docx", "pptx", "xlsx", "mdbx"):
+            data = office2007.extraer(self.archivo)
+        elif extension == "pdf":
+            data = pdf1.extraer(self.archivo)
+        elif extension in ('odt', 'odf', 'sxw', 'odp', 'odg'):
+            data = libreoffice.extraer(self.archivo)
+        elif extension in ('jpg', 'jpeg'):
+            data = exif.extraer(self.archivo)
+        elif extension == ("gif"):
+            data = gifg.extraer(self.archivo)
+        else:
+            data = {"Error": "Archivo no soportado"}
+
+        if data:
+            data["sha1"] = informacion(self.archivo)
+            self.emitir(data)
+
+    def emitir(self, data):
+        time.sleep(0.3)
+        self.emit(SIGNAL("Extraer"), data, self.index)
+
+
+class Crawler(QThread):
+    def __init__(self, tipo, site, extension, profundidad=None):
+        QThread.__init__(self)
+        self.tipo = tipo
+        self.site = site
+        self.extension = extension
+        self.profundidad = profundidad
+
+    def __del__(self):
+        self.wait()
+
+    def run(self):
+        if self.tipo == "Google":
+            data = google.crawl(self.site, self.extension)
+            self.emitir(data)
+        if self.tipo == "Grampus":
+            data = grampus.crawl(self.site, self.profundidad, self.extension)
+            self.emitir(data)
+
+    def emitir(self, data):
+        time.sleep(0.3)
+        self.emit(SIGNAL("Crawler"), data)
+
+
+class Descargar(QThread):
+
+    def __init__(self, url, direct=None):
+        super(Descargar, self).__init__()
+        self.url = url
+        self.direct = direct
+
+    def __del__(self):
+        self.wait()
+
+    def run(self):
+        self.emit(SIGNAL("Descargar"), descargar(self.url, self.direct))
+
+class Informacion(QThread):
+    
+    def __init__(self, archivo, index):
+        QThread.__init__(self)
+        self.archivo = archivo
+        self.index = index
+    
+    def __del__(self):
+        self.wait()
+    
+    def run(self):
+        self.emit(SIGNAL("Informacion"), informacion(self.archivo), self.index)
+    
+    
+    
+
+

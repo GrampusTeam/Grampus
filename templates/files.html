@@ -1,0 +1,23 @@
+<div class="content">
+    <div class="botones">
+        <div title="files">
+            {{ amount }}
+        </div>
+    </div>
+    <h2>Uploaded Files</h2>
+    {% for item in dic %}
+		<table class="metadata">
+				<tr>
+					<td><strong>{{ item }}</strong></td>
+				</tr>
+				{%  for arc in dic[item]  %}
+					<tr>
+						<td onclick="cargar('/view/{{ arc }}');">
+							{{  arc  }}
+						</td>
+					</tr>
+				{% endfor %}
+		</table>
+	{% endfor %}
+</span>
+

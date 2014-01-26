@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Grampus</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}" />
+        <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" />
+        <script type="text/javascript" src="{{  url_for('static', filename='jquery-2.0.3.js')  }}"></script>
+        <script type="text/javascript" src="{{  url_for('static', filename='script.js')  }}"></script>
+    </head>
+    <body id="body" onhashchange="url();">
+        <div id="padre">
+        <div id="lateral">
+            <img src="{{  url_for('static', filename='logo.png')  }}" alt="Logo Grampus" class="logo"/>
+            <ul class="menu">
+				<h3>Metadata Extraction</h3>
+                <li onclick="cargar('/upload');">Upload files</li>
+                <li onclick="cargar('/files');">View files</li>
+                <li onclick="cargar('/config');">Plugins</li>
+            </ul>
+        </div>
+        <div id="contenido">
+            <!--img src="{{  url_for('static', filename='logo.png')  }}" alt="Logo Grampus"/ class="logo"-->
+            <div id="ajax"></div>
+        </div>
+            <div id="grampus">
+                Grampus Team
+            </div>
+        </div>
+    </body>
+</html>

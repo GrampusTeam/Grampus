@@ -1,0 +1,9 @@
+<form action="upload" enctype="multipart/form-data" method="POST">
+    <h1>Upload</h1>
+    <div id="upload">
+        <input id="archivos" type="file" name="file[]" multiple="multiple" onchange="a(this);"/>
+    </div>
+    <span id="filename"></span>
+    <p/>
+    <input type="button" name="submit" value="Subir" onclick="subir();"/>
+</form>

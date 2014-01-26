@@ -1,0 +1,30 @@
+<div class="content">
+    <div class="botones">
+        <div title="Delete" onclick="cargar('/delete/{{ sFile }}');" class="rojo"></div>
+    </div>
+
+    <h1>{{  sFile  }}</h1>
+    <p><i>Ctime: {{ time_dat }}</i></p>
+    {% for metadata in data%}
+        <table class="metadata">
+            <td colspan="2">Extracted Metadata</td>
+                {%  for meta in metadata  %}
+                    <tr>
+                    <td>{{  meta[0]  }}</td>
+                    <td>{{  meta[1]  }}</td>
+					</tr>
+				{%  endfor  %}
+				{% for i in extra %}
+                    <tr>
+                    <td>{{  i  }}</td>
+                    <td>{{  extra[i]  }}</td>
+					</tr>
+				{% endfor %}
+        </table>
+    {% endfor %}
+		<br>
+		<ul>
+			<li>Delete metadata</li>
+			<li>Modify metadata</li>
+		</ul>
+</div>
